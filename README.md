@@ -10,7 +10,7 @@
 ![Redis](https://img.shields.io/badge/Redis-7.2-DC382D?logo=redis&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
 
-![LittleTrip Demo UI](frontend.png)
+![LittleTrip Demo UI](docs/frontend.png)
 
 </div>
 
@@ -188,6 +188,9 @@ BASE_URL=http://staging.example.com ./run.sh
 Requires [k6](https://k6.io/docs/get-started/installation/) installed locally. Metrics are pushed to Prometheus and visible in Grafana at http://localhost:4000 while the test runs.
 
 </details>
+
+
+![Stress Test Image](docs/stress-test.png)
 
 ---
 
