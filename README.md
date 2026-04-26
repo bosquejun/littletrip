@@ -185,12 +185,13 @@ cd k6 && ./run.sh
 BASE_URL=http://staging.example.com ./run.sh
 ```
 
-Requires [k6](https://k6.io/docs/get-started/installation/) installed locally. Metrics are pushed to Prometheus and visible in Grafana at http://localhost:4000 while the test runs.
+![Stress Test Image](docs/stress-test.png)
+
+> Requires [k6](https://k6.io/docs/get-started/installation/) installed locally. Metrics are pushed to Prometheus and visible in Grafana at http://localhost:4000 while the test runs.
 
 </details>
 
 
-![Stress Test Image](docs/stress-test.png)
 
 ---
 
