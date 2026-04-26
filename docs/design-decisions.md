@@ -1,6 +1,71 @@
 # Design Decisions
 
-This document explains where the implementation intentionally diverges from the original challenge spec and the reasoning behind each change.
+This document explains where the implementation intentionally diverges from the original challenge spec and the reasoning behind each change. It also captures assumptions, current limitations, and future architectural directions.
+
+---
+
+## Assumptions
+
+- **Single-instance deployment**: The current implementation runs as a single-node service. Horizontal scaling via multiple instances is not yet implemented.
+- **Synchronous processing**: All fare transactions are processed synchronously—request comes in, fare is calculated, response is returned inline.
+- **Direct database access**: The API communicates directly with PostgreSQL. No intermediate message broker in the current architecture.
+- **Trusted internal network**: Assumes API is deployed behind a gateway/load balancer in a controlled environment. No mTLS between services.
+- **Idempotent operations**: Duplicate transaction requests with the same `deviceId` + timestamp window are considered idempotent (handled at DB constraint level).
+
+---
+
+## Current Limitations
+
+### Horizontal Scalability
+
+The current architecture is **vertically scaled only**:
+
+```
+[Load Balancer] → [API Instance] → [PostgreSQL]
+```
+
+- Single API instance handles all requests
+- Database becomes the bottleneck under high load
+- No way to scale read/write independently
+- Connection pool limits constrain concurrency
+
+### Reliability
+
+- **No message durability**: If the API crashes mid-request, in-flight transactions are lost
+- **No retry logic**: Failed requests are not automatically retried
+- **No dead-letter handling**: Poison messages have nowhere to go
+- **Single point of failure**: Database downtime = total service outage
+
+---
+
+## Future Architecture: Message Queue
+
+To achieve distributed architecture and robustness, the system should evolve toward:
+
+```
+[Device] → [API] → [Message Queue] → [Processor] → [Database]
+                    ↓
+              [Dead Letter Queue]
+```
+
+### Recommended: Apache Kafka
+
+| Aspect | Rationale |
+|--------|-----------|
+| **Durability** | Messages persisted to disk, survive broker restarts |
+| **Ordering** | Per-partition ordering enables exactly-once semantics |
+| **Replayability** | Consumer groups can replay from offsets for reprocessing |
+| **Scalability** | Partition-based horizontal scaling |
+| **Ecosystem** | Rich connector ecosystem for analytics/pipelines |
+
+### Alternative: RabbitMQ
+
+| Aspect | Rationale |
+|--------|-----------|
+| **Simpler ops** | Easier to operate for smaller scale |
+| **Flexible routing** | Complex routing patterns via exchanges |
+| **Lower latency** | Better for low-latency requirements |
+| **Smart consumers** | Push-based delivery model |
 
 ---
 
