@@ -1,0 +1,13 @@
+[
+  {
+    "adapter": "Java",
+    "request": "launch",
+    "label": "Debug API",
+    // if your project has multiple entry points, specify the one to use:
+    // "mainClass": "com.myorganization.myproject.MyMainClass",
+    "mainClass": "com.littetrip.api.ApiApplication",
+    "stopOnEntry": true,
+    // the working directory for the debug process
+    "cwd": "$ZED_WORKTREE_ROOT",
+  },
+]

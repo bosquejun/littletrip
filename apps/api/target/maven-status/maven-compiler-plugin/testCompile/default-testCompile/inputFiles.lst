@@ -1,0 +1,13 @@
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/service/TransitFareServiceTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/config/RateLimitInterceptorTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/security/ApiKeyAuthFilterTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/service/OperatorDeviceServiceTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/service/ApiKeyServiceTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/controller/OperatorControllerTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/service/OperatorServiceTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/service/TripServiceTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/service/RateLimitServiceTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/config/TestRedisConfig.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/controller/TripControllerTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/service/TapServiceTest.java
+/home/junbosque/little-trip/apps/api/src/test/java/com/littletrip/api/controller/TapControllerTest.java

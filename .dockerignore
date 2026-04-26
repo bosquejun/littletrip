@@ -1,0 +1,15 @@
+**/.git
+**/.next
+**/node_modules
+**/target
+**/.env*.local
+**/dist
+**/.turbo
+**/coverage
+**/__tests__
+**/*.test.ts
+**/*.spec.ts
+apps/api/.worktrees
+docker
+docs
+k6
