@@ -16,6 +16,14 @@
 
 ---
 
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) + Docker Compose
+- [pnpm](https://pnpm.io/installation)
+- [k6](https://k6.io/docs/get-started/installation/) (optional, for load testing)
+
+---
+
 ## Quick Start
 
 The fastest way to run the full stack is a single script. It builds and starts every service, waits for the API to be healthy, fetches an operator API key automatically, and wires it into the web container.
