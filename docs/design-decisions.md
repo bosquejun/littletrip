@@ -10,7 +10,8 @@ This document explains where the implementation intentionally diverges from the 
 - **Synchronous processing**: All fare transactions are processed synchronously—request comes in, fare is calculated, response is returned inline.
 - **Direct database access**: The API communicates directly with PostgreSQL. No intermediate message broker in the current architecture.
 - **Trusted internal network**: Assumes API is deployed behind a gateway/load balancer in a controlled environment. No mTLS between services.
-- **Idempotent operations**: Duplicate transaction requests with the same `deviceId` + timestamp window are considered idempotent (handled at DB constraint level).
+- **Client-provided requestId**: Duplicate transaction requests are handled via `requestId` (UUID) provided by the client. The API returns 409 if the `requestId` already exists (UNIQUE constraint at DB level).
+- **Operator-authenticated clients**: API clients are transit operators using device terminals or admin dashboards. All endpoints use `X-API-Key` header for authentication. The API key is associated with an operator and their registered devices. The `deviceId` in requests must belong to the operator identified by the API key.
 
 ---
 
