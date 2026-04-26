@@ -190,6 +190,6 @@ Requires [k6](https://k6.io/docs/get-started/installation/) installed locally. M
 | [Setup](docs/setup.md) | Quick start, manual dev, env var reference |
 | [API](docs/api.md) | All endpoints, auth, rate limiting, error codes |
 | [Business Rules](docs/business-rules.md) | Journey state machine, fare calculation, device auth |
-| [Design Decisions](docs/design-decisions.md) | Reasoning behind changes from the original spec |
+| [Design Decisions / Assumptions and Limitations](docs/design-decisions.md) | Assumptions, limitations and reasoning behind changes from the original spec |
 | [Architecture](docs/architecture.md) | System diagram, layer structure, DB schema, observability |
 | [Load Testing](docs/load-testing.md) | k6 stress test scenarios, thresholds, Grafana monitoring |
