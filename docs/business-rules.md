@@ -85,7 +85,7 @@ An operator may have multiple API keys and multiple devices. A tap event is only
 
 ---
 
-## Duplicate Event Detection
+## Duplicate Event Detection (Idempotency)
 
 Every tap request includes a client-generated `id` (UUID). This is persisted as `request_id` with a `UNIQUE` constraint on the `tap_events` table. A second request with the same UUID returns `409 Conflict` immediately, before any journey state changes are made. This makes tap submission safe to retry.
 
